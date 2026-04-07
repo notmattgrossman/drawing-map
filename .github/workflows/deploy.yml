@@ -17,14 +17,11 @@ jobs:
 
       - name: Generate config.js
         run: |
-          cat > config.js << 'EOF'
-          const CONFIG = {
-              MAPBOX_ACCESS_TOKEN: '${{ secrets.MAPBOX_TOKEN }}'
-          };
-          if (typeof window !== 'undefined') {
-              window.CONFIG = CONFIG;
-          }
-          EOF
+          printf 'const CONFIG = { MAPBOX_ACCESS_TOKEN: "%s" };\nif (typeof window !== "undefined") { window.CONFIG = CONFIG; }\n' "$MAPBOX_TOKEN" > config.js
+          echo "config.js created:"
+          cat config.js
+        env:
+          MAPBOX_TOKEN: ${{ secrets.MAPBOX_TOKEN }}
 
       - name: Upload to Pages
         uses: actions/upload-pages-artifact@v3
