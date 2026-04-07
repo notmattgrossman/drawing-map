@@ -157,7 +157,7 @@ function loadSketches() {
                 const el = document.createElement('div');
                 el.className = 'sketch-marker';
                 el.innerHTML = `<img src="sketchbook-bank/${encodeURIComponent(sketch.filename)}" alt="${sketch.title}">`;
-                el.addEventListener('click', () => openSketchModal(i));
+                el.addEventListener('click', () => handleMarkerClick(i));
 
                 const marker = new mapboxgl.Marker(el).setLngLat(sketch.coordinates).addTo(map);
                 markers.push({ marker, index: i });
@@ -169,6 +169,30 @@ function loadSketches() {
             map.on('move', updateMarkerPositions);
         })
         .catch(err => console.error('Error loading sketches:', err));
+}
+
+// ── Marker click ──────────────────────────────────────────────────────────
+
+function handleMarkerClick(index) {
+    const group = cityGroups.find(g => g.indices.includes(index));
+    if (group && group.indices.length > 1 && map.getZoom() < EXPAND_ZOOM) {
+        // Zoom to fit the whole group
+        let minLng = Infinity, maxLng = -Infinity;
+        let minLat = Infinity, maxLat = -Infinity;
+        group.indices.forEach(i => {
+            const [lng, lat] = sketches[i].coordinates;
+            minLng = Math.min(minLng, lng);
+            maxLng = Math.max(maxLng, lng);
+            minLat = Math.min(minLat, lat);
+            maxLat = Math.max(maxLat, lat);
+        });
+        map.fitBounds(
+            [[minLng, minLat], [maxLng, maxLat]],
+            { padding: 80, maxZoom: EXPAND_ZOOM + 1, duration: 600 }
+        );
+    } else {
+        openSketchModal(index);
+    }
 }
 
 // ── Modal ──────────────────────────────────────────────────────────────────
