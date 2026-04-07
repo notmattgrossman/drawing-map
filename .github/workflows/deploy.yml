@@ -27,15 +27,13 @@ jobs:
               window.CONFIG = CONFIG;
           }
           EOF
-          ls -la config.js
 
       - name: Build (if needed)
         run: npm run build || echo "No build script"
 
       - name: Deploy to GitHub Pages
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add -f config.js
-          git commit --allow-empty -m "Deploy with config.js"
-          git push origin HEAD:gh-pages --force
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          force_orphan: true
