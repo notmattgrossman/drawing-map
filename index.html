@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketchbook Map</title>
+    <base href="/drawing-map/">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css' rel='stylesheet' />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="map"></div>
+
+    <button id="tour-btn" class="tour-button">Take me on a tour</button>
+
+    <div id="tour-bar" class="tour-bar" style="display: none;">
+        <div class="tour-bar-info">
+            <button id="tour-prev-btn" class="tour-arrow">←</button>
+            <div class="tour-text">
+                <span id="tour-city-name" class="tour-city-name"></span>
+            </div>
+            <button id="tour-next-btn" class="tour-arrow">→</button>
+        </div>
+        <button id="tour-exit-btn" class="tour-exit">✕</button>
+    </div>
+    
+    <div id="sketch-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeSketchModal()">&times;</button>
+            
+            <div class="modal-header">
+                <h2 id="modal-title"></h2>
+                <p id="modal-date" class="modal-date"></p>
+            </div>
+            
+            <div class="modal-body">
+                <img id="modal-image" src="" alt="Sketch">
+            </div>
+            
+            <div class="modal-footer">
+                <div class="modal-info">
+                    <span class="info-label">Location:</span>
+                    <span id="modal-location"></span>
+                </div>
+                <div class="modal-nav">
+                    <button id="prev-btn" class="nav-btn" onclick="prevSketch()">← Previous</button>
+                    <span id="sketch-counter" class="counter"></span>
+                    <button id="next-btn" class="nav-btn" onclick="nextSketch()">Next →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js'></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

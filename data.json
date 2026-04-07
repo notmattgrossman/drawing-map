@@ -1,0 +1,964 @@
+{
+  "sketches": [
+    {
+      "id": "sketch-1775486624060",
+      "filename": "2E.png",
+      "coordinates": [
+        -90.31220543294245,
+        38.65603922845085
+      ],
+      "title": "2E",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775486668897",
+      "filename": "Alice.png",
+      "coordinates": [
+        12.58199807308111,
+        55.681603137758486
+      ],
+      "title": "Alice",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775486679419",
+      "filename": "Alien.png",
+      "coordinates": [
+        -106.40584553452082,
+        31.802390608961588
+      ],
+      "title": "Alien",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775486688652",
+      "filename": "Amoco Sign.png",
+      "coordinates": [
+        -90.3053359743072,
+        38.633849804606314
+      ],
+      "title": "Amoco Sign",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775486700952",
+      "filename": "Berlin TV Tower.png",
+      "coordinates": [
+        13.396614317314175,
+        52.5139963068321
+      ],
+      "title": "Berlin TV Tower",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775486716935",
+      "filename": "Big Ben.png",
+      "coordinates": [
+        -0.1426310440684233,
+        51.49290570605217
+      ],
+      "title": "Big Ben",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775486732611",
+      "filename": "Bingo.png",
+      "coordinates": [
+        -90.31092411129761,
+        38.65458281448079
+      ],
+      "title": "Bingo",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775505932457",
+      "filename": "Book.png",
+      "coordinates": [
+        12.614073706179909,
+        55.659963348010365
+      ],
+      "title": "Book",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775505934644",
+      "filename": "Bubbles.png",
+      "coordinates": [
+        12.583530245499134,
+        55.67718921916449
+      ],
+      "title": "Bubbles",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775505943691",
+      "filename": "Buchstaben Museum.png",
+      "coordinates": [
+        13.399422977301526,
+        52.51938230025331
+      ],
+      "title": "Buchstaben Museum",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775505954308",
+      "filename": "CPH Faves-1.png",
+      "coordinates": [
+        12.588552450994115,
+        55.67952749853839
+      ],
+      "title": "CPH Faves-1",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775505975433",
+      "filename": "CPH Faves.png",
+      "coordinates": [
+        12.595628758400238,
+        55.651739786920245
+      ],
+      "title": "CPH Faves",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775505988537",
+      "filename": "Cafe.png",
+      "coordinates": [
+        -90.09475339405286,
+        29.983156764298215
+      ],
+      "title": "Cafe",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775505998754",
+      "filename": "Casa.png",
+      "coordinates": [
+        -8.608637250671109,
+        41.14357154947726
+      ],
+      "title": "Casa",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506034865",
+      "filename": "Chair.png",
+      "coordinates": [
+        -90.31216149291964,
+        38.65564681253093
+      ],
+      "title": "Chair",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506046670",
+      "filename": "Coffee.png",
+      "coordinates": [
+        -8.607852772461428,
+        41.143003056839746
+      ],
+      "title": "Coffee",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506056520",
+      "filename": "Cover 2.png",
+      "coordinates": [
+        4.631383024261339,
+        43.678277157065935
+      ],
+      "title": "Cover 2",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506066895",
+      "filename": "Cover-1.png",
+      "coordinates": [
+        12.6056112277831,
+        55.659647696717855
+      ],
+      "title": "Cover-1",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506078358",
+      "filename": "Cover.png",
+      "coordinates": [
+        4.631916534423681,
+        43.681609661069615
+      ],
+      "title": "Cover",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506090974",
+      "filename": "Covers.png",
+      "coordinates": [
+        -103.36966654770534,
+        29.31039177255404
+      ],
+      "title": "Covers",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506102741",
+      "filename": "Curators.png",
+      "coordinates": [
+        12.573167251538223,
+        55.68026826591415
+      ],
+      "title": "Curators",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506181179",
+      "filename": "David.png",
+      "coordinates": [
+        11.25561401586657,
+        43.77064050218635
+      ],
+      "title": "David",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506192020",
+      "filename": "Demo.png",
+      "coordinates": [
+        12.574980280122958,
+        55.67907496572735
+      ],
+      "title": "Demo",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506201345",
+      "filename": "Double Spread.png",
+      "coordinates": [
+        -0.12521249756861152,
+        51.494427361710336
+      ],
+      "title": "Double Spread",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506209279",
+      "filename": "Draw 1.png",
+      "coordinates": [
+        4.637110975852323,
+        43.679194921207284
+      ],
+      "title": "Draw 1",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506211399",
+      "filename": "Draw 10.png",
+      "coordinates": [
+        4.625618164370536,
+        43.67638162800549
+      ],
+      "title": "Draw 10",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506213620",
+      "filename": "Draw 2.png",
+      "coordinates": [
+        4.625087726917201,
+        43.682263817900804
+      ],
+      "title": "Draw 2",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506216357",
+      "filename": "Draw 3.png",
+      "coordinates": [
+        4.631806601322296,
+        43.685332557616704
+      ],
+      "title": "Draw 3",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506218958",
+      "filename": "Draw 4.png",
+      "coordinates": [
+        4.633636126173883,
+        43.683898256973094
+      ],
+      "title": "Draw 4",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506221578",
+      "filename": "Draw 5.png",
+      "coordinates": [
+        4.631142411463344,
+        43.67704510552045
+      ],
+      "title": "Draw 5",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506241070",
+      "filename": "Draw 6.png",
+      "coordinates": [
+        5.365583687743111,
+        43.3005265342417
+      ],
+      "title": "Draw 6",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506249912",
+      "filename": "Draw 7.png",
+      "coordinates": [
+        4.623143054655486,
+        43.6791237318611
+      ],
+      "title": "Draw 7",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506252029",
+      "filename": "Draw 8.png",
+      "coordinates": [
+        4.6266209409211,
+        43.68163895196756
+      ],
+      "title": "Draw 8",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506253849",
+      "filename": "Draw 9.png",
+      "coordinates": [
+        4.6282261191985015,
+        43.67583443877572
+      ],
+      "title": "Draw 9",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506262682",
+      "filename": "Dublin.png",
+      "coordinates": [
+        -6.261074987455714,
+        53.34852759709088
+      ],
+      "title": "Dublin",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506272225",
+      "filename": "Duomo 1.png",
+      "coordinates": [
+        11.258357008940095,
+        43.77220314962335
+      ],
+      "title": "Duomo 1",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506274696",
+      "filename": "Duomo 2.png",
+      "coordinates": [
+        11.256755117168922,
+        43.77181757520219
+      ],
+      "title": "Duomo 2",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506295229",
+      "filename": "Eads Bridge.png",
+      "coordinates": [
+        -90.18650536498961,
+        38.618906928040644
+      ],
+      "title": "Eads Bridge",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506312708",
+      "filename": "El Capitan.png",
+      "coordinates": [
+        -104.8227689460674,
+        31.879853664038038
+      ],
+      "title": "El Capitan",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506325504",
+      "filename": "Fjord.png",
+      "coordinates": [
+        10.733671086495832,
+        59.90078745793164
+      ],
+      "title": "Fjord",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506339887",
+      "filename": "Flora.png",
+      "coordinates": [
+        -103.32156567156424,
+        29.258099072543104
+      ],
+      "title": "Flora",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506348232",
+      "filename": "GGB.png",
+      "coordinates": [
+        -122.47121849572025,
+        37.80442965478173
+      ],
+      "title": "GGB",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506365291",
+      "filename": "Gators.png",
+      "coordinates": [
+        -80.53959412984098,
+        25.388082365069735
+      ],
+      "title": "Gators",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506378790",
+      "filename": "Gif 1.png",
+      "coordinates": [
+        -0.12831117552832438,
+        51.48388294737612
+      ],
+      "title": "Gif 1",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506394016",
+      "filename": "Guadalupe.png",
+      "coordinates": [
+        -104.81672050426981,
+        31.892028157581606
+      ],
+      "title": "Guadalupe",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506407028",
+      "filename": "Houjse.png",
+      "coordinates": [
+        12.61087880984914,
+        55.691249287776714
+      ],
+      "title": "Houjse",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506409307",
+      "filename": "Hygge.png",
+      "coordinates": [
+        12.565084114584351,
+        55.6669820976301
+      ],
+      "title": "Hygge",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506420328",
+      "filename": "Iceland.png",
+      "coordinates": [
+        -18.74027909366845,
+        63.611919562358196
+      ],
+      "title": "Iceland",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506548658",
+      "filename": "Ina Coolbrith.png",
+      "coordinates": [
+        -122.41357717560983,
+        37.79823537475214
+      ],
+      "title": "Ina Coolbrith",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506570586",
+      "filename": "Inside Cover.png",
+      "coordinates": [
+        12.612226932101521,
+        55.6572101668138
+      ],
+      "title": "Inside Cover",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506573078",
+      "filename": "Inside Covers.png",
+      "coordinates": [
+        12.609892846111677,
+        55.65953974609258
+      ],
+      "title": "Inside Covers",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506586204",
+      "filename": "Instagram post - 1.png",
+      "coordinates": [
+        -3.6996089796192564,
+        40.413788709778004
+      ],
+      "title": "Instagram post - 1",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506587991",
+      "filename": "Instagram post - 2.png",
+      "coordinates": [
+        -3.709547724300876,
+        40.409390544359155
+      ],
+      "title": "Instagram post - 2",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506589795",
+      "filename": "Instagram post - 3.png",
+      "coordinates": [
+        -3.703006841048534,
+        40.40395711963504
+      ],
+      "title": "Instagram post - 3",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506591604",
+      "filename": "Instagram post - 4.png",
+      "coordinates": [
+        -3.7098875104433944,
+        40.40887309423556
+      ],
+      "title": "Instagram post - 4",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506606249",
+      "filename": "Isalnds Brygge Painting.png",
+      "coordinates": [
+        12.577387878634738,
+        55.66661842600661
+      ],
+      "title": "Isalnds Brygge Painting",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506608487",
+      "filename": "Islands Brygge.png",
+      "coordinates": [
+        12.577563264396218,
+        55.66592598798866
+      ],
+      "title": "Islands Brygge",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506625012",
+      "filename": "Jazz.png",
+      "coordinates": [
+        -90.08729381656137,
+        29.921817085716768
+      ],
+      "title": "Jazz",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506627532",
+      "filename": "Jazzy.png",
+      "coordinates": [
+        -90.08505846083976,
+        29.920848381921047
+      ],
+      "title": "Jazzy",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506641053",
+      "filename": "Landscape 1.png",
+      "coordinates": [
+        4.626238758941355,
+        43.678656321678915
+      ],
+      "title": "Landscape 1",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506644682",
+      "filename": "Landscape 2.png",
+      "coordinates": [
+        4.6303322948346874,
+        43.67705412283581
+      ],
+      "title": "Landscape 2",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506654679",
+      "filename": "Landscape 3.png",
+      "coordinates": [
+        4.629417269163781,
+        43.67834285135871
+      ],
+      "title": "Landscape 3",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506667491",
+      "filename": "Letters 2.png",
+      "coordinates": [
+        13.402792587446015,
+        52.520084561295704
+      ],
+      "title": "Letters 2",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506669812",
+      "filename": "Letters.png",
+      "coordinates": [
+        13.398946384024981,
+        52.51219197283791
+      ],
+      "title": "Letters",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506681770",
+      "filename": "MacArthur Bridge.png",
+      "coordinates": [
+        -90.18253460709741,
+        38.63116057362208
+      ],
+      "title": "MacArthur Bridge",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506688653",
+      "filename": "Map.png",
+      "coordinates": [
+        -94.02949297149186,
+        33.355222405377035
+      ],
+      "title": "Map",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506699212",
+      "filename": "Market.png",
+      "coordinates": [
+        4.88622617804748,
+        52.37435889562079
+      ],
+      "title": "Market",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506708370",
+      "filename": "Metro Map.png",
+      "coordinates": [
+        12.59697593886878,
+        55.662180313352906
+      ],
+      "title": "Metro Map",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506727246",
+      "filename": "Mission Delores.png",
+      "coordinates": [
+        -122.42720047191054,
+        37.75923359936475
+      ],
+      "title": "Mission Delores",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506737591",
+      "filename": "Narrows.png",
+      "coordinates": [
+        -112.96011301738282,
+        37.24676601458667
+      ],
+      "title": "Narrows",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506747862",
+      "filename": "Nightscape.png",
+      "coordinates": [
+        10.739716599698738,
+        59.909140707595924
+      ],
+      "title": "Nightscape",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506754812",
+      "filename": "Park.png",
+      "coordinates": [
+        10.734781814338561,
+        59.914297759225036
+      ],
+      "title": "Park",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506763996",
+      "filename": "Phone.png",
+      "coordinates": [
+        -0.13271425348787602,
+        51.49170237153302
+      ],
+      "title": "Phone",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506773516",
+      "filename": "Rnadom.png",
+      "coordinates": [
+        12.57435933144609,
+        55.66512008597999
+      ],
+      "title": "Rnadom",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506784524",
+      "filename": "Ross Maxwell.png",
+      "coordinates": [
+        -103.3416710862467,
+        29.281598548084546
+      ],
+      "title": "Ross Maxwell",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506795567",
+      "filename": "Scream.png",
+      "coordinates": [
+        10.74094196887512,
+        59.911308288938415
+      ],
+      "title": "Scream",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506805054",
+      "filename": "Scribbles.png",
+      "coordinates": [
+        13.397040532991952,
+        52.51872818024742
+      ],
+      "title": "Scribbles",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506830450",
+      "filename": "Sketchnotes.png",
+      "coordinates": [
+        -90.3039492807851,
+        38.64841186002221
+      ],
+      "title": "Sketchnotes",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506843163",
+      "filename": "Sticker.png",
+      "coordinates": [
+        13.399709438811584,
+        52.517567661383794
+      ],
+      "title": "Sticker",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506854745",
+      "filename": "Studio 54.png",
+      "coordinates": [
+        -90.30424488909769,
+        38.64683635858438
+      ],
+      "title": "Studio 54",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506874132",
+      "filename": "Tech.png",
+      "coordinates": [
+        13.400414297480552,
+        52.5174994464283
+      ],
+      "title": "Tech",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506890762",
+      "filename": "Thumbnails.png",
+      "coordinates": [
+        -122.40858882080425,
+        37.798261492872655
+      ],
+      "title": "Thumbnails",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506906158",
+      "filename": "Tile 1.png",
+      "coordinates": [
+        -8.610452082807484,
+        41.14495720793681
+      ],
+      "title": "Tile 1",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506907917",
+      "filename": "Tile 2.png",
+      "coordinates": [
+        -8.603469740078594,
+        41.14630540809995
+      ],
+      "title": "Tile 2",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506916524",
+      "filename": "Transportation.png",
+      "coordinates": [
+        -0.13417897374094423,
+        51.49829005320947
+      ],
+      "title": "Transportation",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506930188",
+      "filename": "Tulips.png",
+      "coordinates": [
+        4.906378827833521,
+        52.29958106059823
+      ],
+      "title": "Tulips",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506950916",
+      "filename": "Ucity.png",
+      "coordinates": [
+        -90.31099602148217,
+        38.65654823217258
+      ],
+      "title": "Ucity",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506957320",
+      "filename": "Venezias.png",
+      "coordinates": [
+        -90.30323430085863,
+        38.64629760664178
+      ],
+      "title": "Venezias",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506974470",
+      "filename": "Vigeland Center.png",
+      "coordinates": [
+        10.727807723330358,
+        59.916869122290734
+      ],
+      "title": "Vigeland Center",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506976399",
+      "filename": "Vigeland Left.png",
+      "coordinates": [
+        10.726732903189827,
+        59.916569809807754
+      ],
+      "title": "Vigeland Left",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506978699",
+      "filename": "Vigeland Right.png",
+      "coordinates": [
+        10.728165996711141,
+        59.917392912641446
+      ],
+      "title": "Vigeland Right",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775506994405",
+      "filename": "WC Pallette.png",
+      "coordinates": [
+        4.913942093352233,
+        52.29547658365479
+      ],
+      "title": "WC Pallette",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775507006341",
+      "filename": "WSNP.png",
+      "coordinates": [
+        -106.15719117446405,
+        32.776732112508995
+      ],
+      "title": "WSNP",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775507016275",
+      "filename": "Watercolors.png",
+      "coordinates": [
+        -104.79981650933428,
+        31.921955580831266
+      ],
+      "title": "Watercolors",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775507021166",
+      "filename": "Window.png",
+      "coordinates": [
+        -103.25879223587846,
+        29.31981067396731
+      ],
+      "title": "Window",
+      "date": ""
+    },
+    {
+      "id": "sketch-1775507030582",
+      "filename": "weed.png",
+      "coordinates": [
+        4.900497541402331,
+        52.3744046310525
+      ],
+      "title": "weed",
+      "date": ""
+    }
+  ]
+}
