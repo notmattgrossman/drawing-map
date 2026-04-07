@@ -5,24 +5,34 @@ on:
     branches: [main]
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
-      - name: Stage files for deployment
+      - name: Generate config.js
         run: |
-          mkdir dist
-          cp -r $(ls | grep -v dist) dist/
-          printf 'const CONFIG = { MAPBOX_ACCESS_TOKEN: "%s" };\nif (typeof window !== "undefined") { window.CONFIG = CONFIG; }\n' "$MAPBOX_TOKEN" > dist/config.js
+          printf 'const CONFIG = { MAPBOX_ACCESS_TOKEN: "%s" };\nif (typeof window !== "undefined") { window.CONFIG = CONFIG; }\n' "$MAPBOX_TOKEN" > config.js
         env:
           MAPBOX_TOKEN: ${{ secrets.MAPBOX_TOKEN }}
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
