@@ -19,14 +19,23 @@ jobs:
 
       - name: Create config.js with token
         run: |
-          sed "s|''|'${{ secrets.MAPBOX_TOKEN }}'|" config.example.js > config.js
-          git add -f config.js
+          cat > config.js << 'EOF'
+          const CONFIG = {
+              MAPBOX_ACCESS_TOKEN: '${{ secrets.MAPBOX_TOKEN }}'
+          };
+          if (typeof window !== 'undefined') {
+              window.CONFIG = CONFIG;
+          }
+          EOF
+          ls -la config.js
 
       - name: Build (if needed)
         run: npm run build || echo "No build script"
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add -f config.js
+          git commit --allow-empty -m "Deploy with config.js"
+          git push origin HEAD:gh-pages --force
