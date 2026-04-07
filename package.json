@@ -1,0 +1,12 @@
+{
+  "name": "sketchbook-map",
+  "version": "1.0.0",
+  "description": "Interactive sketchbook map with admin panel",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["map", "sketchbook", "mapbox"],
+  "author": "",
+  "license": "MIT"
+}
