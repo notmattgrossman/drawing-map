@@ -1,10 +1,12 @@
-// Copy to config.js and add your Mapbox public token:
-// https://account.mapbox.com/access-tokens/
+// Configuration file for API keys and sensitive data
+// This file is ignored by git - never commit it!
+// On GitHub Pages, this is generated from environment variables
 
 const CONFIG = {
-    MAPBOX_ACCESS_TOKEN: 'YOUR_MAPBOX_PUBLIC_TOKEN'
+    MAPBOX_ACCESS_TOKEN: ''
 };
 
+// Make config available globally
 if (typeof window !== 'undefined') {
     window.CONFIG = CONFIG;
 }
