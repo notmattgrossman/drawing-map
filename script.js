@@ -11,7 +11,9 @@ const map = new mapboxgl.Map({
     dragRotate: false
 });
 
+let mode = 'sketches'; // 'sketches' | 'types'
 let sketches = [];
+let typePhotos = [];
 let currentSketchIndex = 0;
 let cityGroups = [];
 let markers = [];
@@ -37,6 +39,25 @@ let currentTourIndex = 0;
 const PROXIMITY_THRESHOLD = 0.001; // ~100 meters for detecting overlaps
 const MIN_SPREAD_DISTANCE = 60; // pixels - minimum distance before spreading
 
+function getActiveItems() {
+    return mode === 'sketches' ? sketches : typePhotos;
+}
+
+function getImagePath(item, thumb = false) {
+    const base = item.filename.replace(/\.[^.]+$/, '');
+    if (mode === 'sketches') {
+        return thumb
+            ? `sketchbook-bank/thumbs/${encodeURIComponent(base)}.webp`
+            : `sketchbook-bank/${encodeURIComponent(item.filename)}`;
+    }
+    return thumb
+        ? `type-photos/thumbs/${encodeURIComponent(base)}.webp`
+        : `type-photos/${encodeURIComponent(base)}.webp`;
+}
+
+// Set initial slider position once fonts/layout have settled
+requestAnimationFrame(positionToggleSlider);
+
 map.on('load', () => {
     const layers = map.getStyle().layers;
     const keepLayers = ['settlement-major-label', 'settlement-minor-label', 'state-label', 'country-label'];
@@ -46,6 +67,7 @@ map.on('load', () => {
         }
     });
     loadSketches();
+    loadTypePhotos();
 });
 
 function haversineKm(lat1, lng1, lat2, lng2) {
@@ -57,10 +79,10 @@ function haversineKm(lat1, lng1, lat2, lng2) {
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-function groupByCity(sketches) {
+function groupByCity(items) {
     const groups = [];
-    sketches.forEach((sketch, i) => {
-        const [lng, lat] = sketch.coordinates;
+    items.forEach((item, i) => {
+        const [lng, lat] = item.coordinates;
         let nearest = null;
         let nearestDist = Infinity;
         for (const group of groups) {
@@ -73,8 +95,8 @@ function groupByCity(sketches) {
         if (nearest) {
             nearest.indices.push(i);
             nearest.centroid = [
-                nearest.indices.reduce((s, idx) => s + sketches[idx].coordinates[0], 0) / nearest.indices.length,
-                nearest.indices.reduce((s, idx) => s + sketches[idx].coordinates[1], 0) / nearest.indices.length
+                nearest.indices.reduce((s, idx) => s + items[idx].coordinates[0], 0) / nearest.indices.length,
+                nearest.indices.reduce((s, idx) => s + items[idx].coordinates[1], 0) / nearest.indices.length
             ];
         } else {
             groups.push({ centroid: [lng, lat], indices: [i] });
@@ -83,19 +105,18 @@ function groupByCity(sketches) {
     return groups;
 }
 
-function getNearbyGroups() {
-    // Group sketches that are very close together
+function getNearbyGroups(items) {
     const groups = [];
     const processed = new Set();
 
-    sketches.forEach((sketch, i) => {
+    items.forEach((item, i) => {
         if (processed.has(i)) return;
 
         const nearby = [i];
-        sketches.forEach((otherSketch, j) => {
+        items.forEach((other, j) => {
             if (i !== j && !processed.has(j)) {
-                const dLng = Math.abs(sketch.coordinates[0] - otherSketch.coordinates[0]);
-                const dLat = Math.abs(sketch.coordinates[1] - otherSketch.coordinates[1]);
+                const dLng = Math.abs(item.coordinates[0] - other.coordinates[0]);
+                const dLat = Math.abs(item.coordinates[1] - other.coordinates[1]);
                 if (dLng < PROXIMITY_THRESHOLD && dLat < PROXIMITY_THRESHOLD) {
                     nearby.push(j);
                 }
@@ -104,7 +125,7 @@ function getNearbyGroups() {
 
         if (nearby.length > 1) {
             nearby.forEach(idx => processed.add(idx));
-            groups.push({ indices: nearby, center: sketch.coordinates });
+            groups.push({ indices: nearby, center: item.coordinates });
         } else {
             processed.add(i);
         }
@@ -114,9 +135,8 @@ function getNearbyGroups() {
 }
 
 function getOffsetCoordinates(center, index, total, zoom) {
-    // Spread radius increases as zoom decreases (more spread when zoomed out)
     const baseRadius = 0.0008;
-    const zoomFactor = Math.max(0.5, (5 - zoom) / 5); // More spread at low zoom
+    const zoomFactor = Math.max(0.5, (5 - zoom) / 5);
     const radius = baseRadius * zoomFactor;
     const angle = (index / total) * Math.PI * 2;
     return [
@@ -126,23 +146,41 @@ function getOffsetCoordinates(center, index, total, zoom) {
 }
 
 function updateMarkerPositions() {
+    const items = getActiveItems();
     const zoom = map.getZoom();
-    const nearbyGroups = getNearbyGroups();
+    const nearbyGroups = getNearbyGroups(items);
 
     markers.forEach((markerData, i) => {
-        // Find if this marker is in a nearby group
         let group = nearbyGroups.find(g => g.indices.includes(i));
 
         if (group && group.indices.length > 1) {
-            // Calculate offset position
             const position = group.indices.indexOf(i);
             const offsetCoords = getOffsetCoordinates(group.center, position, group.indices.length, zoom);
             markerData.marker.setLngLat(offsetCoords);
         } else {
-            // Reset to actual coordinates
-            markerData.marker.setLngLat(sketches[i].coordinates);
+            markerData.marker.setLngLat(items[i].coordinates);
         }
     });
+}
+
+function renderMarkers(items) {
+    cityGroups = groupByCity(items);
+
+    items.forEach((item, i) => {
+        const el = document.createElement('div');
+        el.className = 'sketch-marker';
+        el.innerHTML = `<img src="${getImagePath(item, true)}" alt="${item.title}">`;
+        el.addEventListener('click', () => handleMarkerClick(i));
+
+        const marker = new mapboxgl.Marker(el).setLngLat(item.coordinates).addTo(map);
+        markers.push({ marker, index: i });
+    });
+
+    updateMarkerPositions();
+}
+
+function preload(srcs) {
+    srcs.forEach(src => { new Image().src = src; });
 }
 
 function loadSketches() {
@@ -150,37 +188,95 @@ function loadSketches() {
         .then(r => r.json())
         .then(data => {
             sketches = data.sketches || [];
-            cityGroups = groupByCity(sketches);
-
-            // Add sketch markers
-            sketches.forEach((sketch, i) => {
-                const el = document.createElement('div');
-                el.className = 'sketch-marker';
-                el.innerHTML = `<img src="sketchbook-bank/${encodeURIComponent(sketch.filename)}" alt="${sketch.title}">`;
-                el.addEventListener('click', () => handleMarkerClick(i));
-
-                const marker = new mapboxgl.Marker(el).setLngLat(sketch.coordinates).addTo(map);
-                markers.push({ marker, index: i });
-            });
-
-            // Update positions on zoom/pan
-            updateMarkerPositions();
+            renderMarkers(sketches);                            // 1. sketch thumbnails (in DOM)
             map.on('zoom', updateMarkerPositions);
             map.on('move', updateMarkerPositions);
+
+            setTimeout(() =>                                   // 3. sketch full images
+                preload(sketches.map(s => `sketchbook-bank/${encodeURIComponent(s.filename)}`))
+            , 3000);
         })
         .catch(err => console.error('Error loading sketches:', err));
 }
 
+function loadTypePhotos() {
+    fetch('type-photos/locations.json')
+        .then(r => r.json())
+        .then(data => {
+            typePhotos = Object.entries(data)
+                .filter(([, info]) => info.latitude != null && info.longitude != null)
+                .map(([filename, info]) => ({
+                    filename,
+                    coordinates: [info.longitude, info.latitude],
+                    title: filename.replace(/\.[^.]+$/, ''),
+                    date: info.date ? info.date.replace(/:/g, '-') : ''
+                }));
+
+            preload(typePhotos.map(item => {                   // 2. type thumbnails (background, ~3 MB)
+                const base = item.filename.replace(/\.[^.]+$/, '');
+                return `type-photos/thumbs/${encodeURIComponent(base)}.webp`;
+            }));
+
+            setTimeout(() =>                                   // 4. type full images
+                preload(typePhotos.map(item => {
+                    const base = item.filename.replace(/\.[^.]+$/, '');
+                    return `type-photos/${encodeURIComponent(base)}.webp`;
+                }))
+            , 6000);
+        })
+        .catch(err => console.error('Error loading type photos:', err));
+}
+
+function positionToggleSlider() {
+    const toggle = document.getElementById('mode-toggle');
+    const activeBtn = toggle.querySelector('.toggle-btn.active');
+    const slider = toggle.querySelector('.toggle-slider');
+    const toggleRect = toggle.getBoundingClientRect();
+    const btnRect = activeBtn.getBoundingClientRect();
+    slider.style.width = btnRect.width + 'px';
+    slider.style.transform = `translateX(${btnRect.left - toggleRect.left - 4}px)`;
+}
+
+function switchMode(newMode) {
+    if (mode === newMode) return;
+    mode = newMode;
+
+    // Clear existing markers
+    markers.forEach(m => m.marker.remove());
+    markers = [];
+
+    // Update toggle UI
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.mode === newMode);
+    });
+    positionToggleSlider();
+
+    // Exit tour if switching away from sketches
+    if (newMode !== 'sketches' && tourActive) {
+        exitTour();
+    }
+
+    // Apply body class for CSS-driven show/hide of tour UI
+    document.body.classList.toggle('mode-types', newMode === 'types');
+
+    renderMarkers(getActiveItems());
+}
+
+// Mode toggle events
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => switchMode(btn.dataset.mode));
+});
+
 // ── Marker click ──────────────────────────────────────────────────────────
 
 function handleMarkerClick(index) {
+    const items = getActiveItems();
     const group = cityGroups.find(g => g.indices.includes(index));
     if (group && group.indices.length > 1 && map.getZoom() < EXPAND_ZOOM) {
-        // Zoom to fit the whole group
         let minLng = Infinity, maxLng = -Infinity;
         let minLat = Infinity, maxLat = -Infinity;
         group.indices.forEach(i => {
-            const [lng, lat] = sketches[i].coordinates;
+            const [lng, lat] = items[i].coordinates;
             minLng = Math.min(minLng, lng);
             maxLng = Math.max(maxLng, lng);
             minLat = Math.min(minLat, lat);
@@ -204,7 +300,6 @@ function openSketchModal(index) {
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 
-    // Close on background click (but not on modal-content click)
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             closeSketchModal();
@@ -218,26 +313,27 @@ function closeSketchModal() {
 }
 
 function displaySketch(index) {
-    if (index < 0 || index >= sketches.length) return;
-    const sketch = sketches[index];
-    document.getElementById('modal-image').src = `sketchbook-bank/${encodeURIComponent(sketch.filename)}`;
-    document.getElementById('modal-title').textContent = sketch.title;
-    document.getElementById('modal-date').textContent = sketch.date || '';
+    const items = getActiveItems();
+    if (index < 0 || index >= items.length) return;
+    const item = items[index];
+    document.getElementById('modal-image').src = getImagePath(item, false);
+    document.getElementById('modal-title').textContent = item.title;
+    document.getElementById('modal-date').textContent = item.date || '';
 
-    const lat = sketch.coordinates[1];
-    const lng = sketch.coordinates[0];
+    const lat = item.coordinates[1];
+    const lng = item.coordinates[0];
     const latDir = lat >= 0 ? 'N' : 'S';
     const lngDir = lng >= 0 ? 'E' : 'W';
     const formattedCoords = `${Math.abs(lat).toFixed(4)}°${latDir}, ${Math.abs(lng).toFixed(4)}°${lngDir}`;
 
     document.getElementById('modal-location').textContent = formattedCoords;
-    document.getElementById('sketch-counter').textContent = `${index + 1} / ${sketches.length}`;
+    document.getElementById('sketch-counter').textContent = `${index + 1} / ${items.length}`;
     document.getElementById('prev-btn').disabled = index === 0;
-    document.getElementById('next-btn').disabled = index === sketches.length - 1;
+    document.getElementById('next-btn').disabled = index === items.length - 1;
 }
 
 function nextSketch() {
-    if (currentSketchIndex < sketches.length - 1) {
+    if (currentSketchIndex < getActiveItems().length - 1) {
         currentSketchIndex++;
         displaySketch(currentSketchIndex);
     }
@@ -281,10 +377,8 @@ function goToTourCity(index) {
     currentTourIndex = index;
     const city = tourCities[index];
 
-    // Find sketches near this city
     const radius = city.radius || 50;
     const sketchesInCity = sketches.filter(sketch => {
-        // Check if excluded
         if (city.exclude) {
             const isExcluded = city.exclude.some(excluded =>
                 Math.abs(sketch.coordinates[0] - excluded[0]) < 0.01 &&
@@ -303,7 +397,6 @@ function goToTourCity(index) {
     });
 
     if (sketchesInCity.length > 0) {
-        // Calculate bounds of sketches
         let minLng = Infinity, maxLng = -Infinity;
         let minLat = Infinity, maxLat = -Infinity;
 
@@ -315,8 +408,7 @@ function goToTourCity(index) {
             maxLat = Math.max(maxLat, lat);
         });
 
-        // Add padding and fit bounds
-        const padding = 0.05; // 5% padding
+        const padding = 0.05;
         const lngPadding = (maxLng - minLng) * padding;
         const latPadding = (maxLat - minLat) * padding;
 
@@ -332,7 +424,6 @@ function goToTourCity(index) {
             }
         );
     } else {
-        // Fallback if no sketches found
         map.flyTo({
             center: city.center,
             zoom: city.zoom,
@@ -348,11 +439,9 @@ function updateTourUI() {
     const city = tourCities[currentTourIndex];
     document.getElementById('tour-city-name').textContent = city.name;
 
-    // Enable/disable buttons
     document.getElementById('tour-prev-btn').disabled = currentTourIndex === 0;
     document.getElementById('tour-next-btn').disabled = currentTourIndex === tourCities.length - 1;
 
-    // Show bar
     document.getElementById('tour-bar').style.display = 'flex';
 }
 

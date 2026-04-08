@@ -385,3 +385,168 @@ function flyToLocation(coordinates) {
         essential: true
     });
 }
+
+// ── Tab navigation ────────────────────────────────────────────────────────
+
+document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(`${tab.dataset.panel}-panel`).classList.add('active');
+    });
+});
+
+// ── Upload ────────────────────────────────────────────────────────────────
+
+let uploadQueue = [];
+let isUploading = false;
+
+function initUploadZones() {
+    document.querySelectorAll('.upload-zone').forEach(zone => {
+        const input = zone.querySelector('.zone-input');
+        const type = zone.dataset.type;
+
+        // Click anywhere in the zone triggers file picker
+        zone.addEventListener('click', e => {
+            if (e.target !== input) input.click();
+        });
+
+        input.addEventListener('change', () => {
+            enqueue(Array.from(input.files), type);
+            input.value = '';
+        });
+
+        zone.addEventListener('dragover', e => {
+            e.preventDefault();
+            zone.classList.add('drag-over');
+        });
+        zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+        zone.addEventListener('drop', e => {
+            e.preventDefault();
+            zone.classList.remove('drag-over');
+            enqueue(Array.from(e.dataTransfer.files), type);
+        });
+    });
+
+    document.getElementById('clear-done-btn').addEventListener('click', () => {
+        document.querySelectorAll('.queue-item.done, .queue-item.error').forEach(el => el.remove());
+        if (!document.querySelector('.queue-item')) {
+            document.getElementById('queue-section').style.display = 'none';
+        }
+    });
+}
+
+function enqueue(files, type) {
+    const imageFiles = files.filter(f => f.type.startsWith('image/'));
+    if (!imageFiles.length) return;
+
+    document.getElementById('queue-section').style.display = 'block';
+
+    imageFiles.forEach(file => {
+        const id = `item-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+        uploadQueue.push({ id, file, type });
+        renderQueueItem(id, file.name, type, 'queued');
+    });
+
+    processQueue();
+}
+
+function renderQueueItem(id, filename, type, status, message = '') {
+    const queue = document.getElementById('upload-queue');
+    let item = document.getElementById(id);
+
+    if (!item) {
+        item = document.createElement('div');
+        item.id = id;
+        item.className = 'queue-item';
+        queue.appendChild(item);
+    }
+
+    const typeLabel = type === 'sketch' ? 'Sketch' : 'Type';
+    const statusText = {
+        queued:     'Queued',
+        uploading:  'Uploading...',
+        processing: 'Processing...',
+        done:       message || 'Done',
+        error:      message || 'Error',
+        skipped:    message || 'Skipped',
+    }[status] || status;
+
+    item.className = `queue-item ${status}`;
+    item.innerHTML = `
+        <span class="queue-filename">${filename}</span>
+        <span class="queue-type">${typeLabel}</span>
+        <span class="queue-status">${statusText}</span>
+    `;
+}
+
+async function processQueue() {
+    if (isUploading || uploadQueue.length === 0) return;
+    isUploading = true;
+
+    while (uploadQueue.length > 0) {
+        const { id, file, type } = uploadQueue.shift();
+        renderQueueItem(id, file.name, type, 'uploading');
+
+        try {
+            const base64 = await readAsBase64(file);
+            const res = await fetch('http://localhost:3000/api/upload', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ type, filename: file.name, data: base64 })
+            });
+
+            if (!res.ok) {
+                const msg = res.status === 405 || res.status === 404
+                    ? 'Server not running — start with: npm start'
+                    : `Server error ${res.status}`;
+                renderQueueItem(id, file.name, type, 'error', msg);
+                continue;
+            }
+
+            const result = await res.json();
+
+            if (result.success) {
+                const summary = parseSummary(result.output, type);
+                renderQueueItem(id, file.name, type, 'done', summary);
+            } else {
+                const err = parseError(result.output, result.error);
+                renderQueueItem(id, file.name, type, 'error', err);
+            }
+        } catch (err) {
+            const msg = err.message.includes('fetch')
+                ? 'Server not running — start with: npm start'
+                : err.message;
+            renderQueueItem(id, file.name, type, 'error', msg);
+        }
+    }
+
+    isUploading = false;
+}
+
+function readAsBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result.split(',')[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+    });
+}
+
+function parseSummary(output, type) {
+    if (!output) return 'Done';
+    if (output.includes('no GPS')) return 'No GPS data — skipped';
+    if (output.includes('already registered') || output.includes('already in locations')) return 'Already exists';
+    const match = output.match(/added (\d+)/);
+    if (match && match[1] === '0') return 'Already exists';
+    if (type === 'sketch') return 'Ready to place — reload page';
+    return 'Added to map — reload to see';
+}
+
+function parseError(output, error) {
+    if (output && output.includes('no GPS')) return 'No GPS data — skipped';
+    return error || 'Unknown error';
+}
+
+initUploadZones();

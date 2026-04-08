@@ -1,5 +1,18 @@
 # Local / editor
 .claude/
+.sixth/
+
+# Upload folders (transient — processed files move into type-photos/ and sketchbook-bank/)
+upload-specs/
+upload-sketches/
+
+# Original source photos in type-photos/ (only WebPs are needed for the site)
+type-photos/*.jpeg
+type-photos/*.jpg
+type-photos/*.JPG
+type-photos/*.png
+type-photos/*.PNG
+type-photos/screenshots/
 
 # API Keys and Environment Variables
 config.js

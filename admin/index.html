@@ -9,37 +9,76 @@
 </head>
 <body>
     <div class="admin-container">
-        <div class="top-bar">
-            <div class="image-preview">
-                <img id="current-image" src="" alt="Current sketch" onerror="console.error('Failed to load image:', this.src)">
-                <div class="image-info">
-                    <div class="filename" id="current-filename">Loading...</div>
-                    <div class="progress" id="progress-text"></div>
-                    <div class="save-status" id="save-status"></div>
+
+        <div class="admin-nav">
+            <button class="nav-tab active" data-panel="place">Place Sketches</button>
+            <button class="nav-tab" data-panel="upload">Upload Images</button>
+        </div>
+
+        <!-- ── Place panel (existing) ── -->
+        <div id="place-panel" class="admin-panel active">
+            <div class="top-bar">
+                <div class="image-preview">
+                    <img id="current-image" src="" alt="Current sketch" onerror="console.error('Failed to load image:', this.src)">
+                    <div class="image-info">
+                        <div class="filename" id="current-filename">Loading...</div>
+                        <div class="progress" id="progress-text"></div>
+                        <div class="save-status" id="save-status"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <div id="map"></div>
+                <div id="temp-marker" class="temp-marker" style="display: none;"></div>
+                <div class="map-instruction" id="map-instruction">Click the map to place this sketch</div>
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search location...">
+                    <div id="search-results" class="search-results"></div>
+                </div>
+            </div>
+
+            <div class="bottom-bar">
+                <button id="back-btn" class="btn btn-secondary">← Back</button>
+                <button id="skip-btn" class="btn btn-secondary">Skip →</button>
+                <button id="confirm-btn" class="btn btn-primary" disabled>Confirm Location</button>
+                <button id="save-data" class="btn btn-success" style="display: none;">Save All</button>
+            </div>
+        </div>
+
+        <!-- ── Upload panel ── -->
+        <div id="upload-panel" class="admin-panel">
+            <div class="upload-content">
+                <div class="upload-zones">
+
+                    <div class="upload-zone" id="zone-sketch" data-type="sketch">
+                        <input type="file" accept="image/*" multiple class="zone-input">
+                        <div class="zone-title">Sketchbooks</div>
+                        <div class="zone-hint">Drop PNG files here or click to select</div>
+                    </div>
+
+                    <div class="upload-zone" id="zone-type" data-type="type">
+                        <input type="file" accept="image/*" multiple class="zone-input">
+                        <div class="zone-title">Type Specimens</div>
+                        <div class="zone-hint">Drop photos here or click to select<br>Photos must have GPS data enabled</div>
+                    </div>
+
+                </div>
+
+                <div class="queue-section" id="queue-section" style="display: none;">
+                    <div class="queue-header">
+                        <span>Queue</span>
+                        <button class="btn-text" id="clear-done-btn">Clear done</button>
+                    </div>
+                    <div id="upload-queue"></div>
                 </div>
             </div>
         </div>
-        
-        <div class="map-container">
-            <div id="map"></div>
-            <div id="temp-marker" class="temp-marker" style="display: none;"></div>
-            <div class="map-instruction" id="map-instruction">Click the map to place this sketch</div>
-            <div class="search-container">
-                <input type="text" id="search-input" placeholder="Search location...">
-                <div id="search-results" class="search-results"></div>
-            </div>
-        </div>
-        
-        <div class="bottom-bar">
-            <button id="back-btn" class="btn btn-secondary">← Back</button>
-            <button id="skip-btn" class="btn btn-secondary">Skip →</button>
-            <button id="confirm-btn" class="btn btn-primary" disabled>Confirm Location</button>
-            <button id="save-data" class="btn btn-success" style="display: none;">Save All</button>
-        </div>
+
     </div>
-    
+
     <div id="status-message" class="status-message"></div>
-    
+
     <script src='https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js'></script>
     <script src="../config.js"></script>
     <script src="admin.js"></script>
