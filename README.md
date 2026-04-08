@@ -40,3 +40,7 @@ Photos need GPS EXIF data (location enabled on your phone). See `type-photos/REA
 ## Deployment
 
 Deployed to GitHub Pages via GitHub Actions. Push to `main` — the action builds `config.js` from the `MAPBOX_ACCESS_TOKEN` repository secret and deploys automatically.
+
+## Acknowledgments
+
+Ryan Gerson came up with the idea to add typeface specimens to the map.
