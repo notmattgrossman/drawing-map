@@ -2,6 +2,10 @@
 
 An interactive map built with Mapbox GL JS that plots hand-drawn sketchbook pages and real-world type specimen photos at their locations. Toggle between the two collections at the bottom of the screen.
 
+<p align="center">
+  <img src="sketchbook-bank/Guadalupe.png" width="480" alt="Guadalupe sketch">
+</p>
+
 ## Running locally
 
 ```
