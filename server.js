@@ -107,7 +107,11 @@ const server = http.createServer((req, res) => {
     let filePath = '.' + decodeURIComponent(pathname);
     if (filePath === './') {
         filePath = './index.html';
-    } else if (filePath === './admin' || filePath === './admin/') {
+    } else if (filePath === './admin') {
+        res.writeHead(301, { 'Location': '/admin/' });
+        res.end();
+        return;
+    } else if (filePath === './admin/') {
         filePath = './admin/index.html';
     }
 

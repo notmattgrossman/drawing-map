@@ -23,6 +23,7 @@ const EXPAND_ZOOM = 11;       // zoom level at which clusters pop open
 
 // Tour data
 const tourCities = [
+    { name: 'Maryland', center: [-76.63, 39.00], zoom: 9, radius: 80 },
     { name: 'Copenhagen', center: [12.57, 55.68], zoom: 11, radius: 50 },
     { name: 'Oslo', center: [10.75, 59.91], zoom: 11, radius: 50 },
     { name: 'Arles', center: [4.63, 43.68], zoom: 12, radius: 40, exclude: [[5.3656, 43.3005]] },
@@ -316,7 +317,9 @@ function displaySketch(index) {
     const items = getActiveItems();
     if (index < 0 || index >= items.length) return;
     const item = items[index];
-    document.getElementById('modal-image').src = getImagePath(item, false);
+    const modalImage = document.getElementById('modal-image');
+    modalImage.src = '';
+    modalImage.src = getImagePath(item, false);
     document.getElementById('modal-title').textContent = item.title;
     document.getElementById('modal-date').textContent = item.date || '';
 

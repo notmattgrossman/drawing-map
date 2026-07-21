@@ -1084,5 +1084,287 @@
     "longitude": -90.19621944444445,
     "altitude_m": 137.28,
     "date": "2026:04:03"
+  },
+  "IMG_2396.jpeg": {
+    "latitude": 41.89092222222222,
+    "longitude": -87.63055555555555,
+    "altitude_m": 181.89,
+    "date": "2026:04:11"
+  },
+  "IMG_2523.jpeg": {
+    "latitude": 41.89341388888889,
+    "longitude": -87.63001388888888,
+    "altitude_m": 187.91,
+    "date": "2026:04:12"
+  },
+  "IMG_2524.jpeg": {
+    "latitude": 41.88998333333333,
+    "longitude": -87.62197222222221,
+    "altitude_m": 187.23,
+    "date": "2026:04:12"
+  },
+  "IMG_2570.jpeg": {
+    "latitude": 38.64921666666667,
+    "longitude": -90.31009722222223,
+    "altitude_m": 168.31,
+    "date": "2026:04:15"
+  },
+  "IMG_3092.jpeg": {
+    "latitude": 38.64903611111111,
+    "longitude": -90.26091666666666,
+    "altitude_m": 160.8,
+    "date": "2026:04:28"
+  },
+  "IMG_3093.jpeg": {
+    "latitude": 38.64918055555555,
+    "longitude": -90.26085555555555,
+    "altitude_m": 150.23,
+    "date": "2026:04:28"
+  },
+  "IMG_3439.jpeg": {
+    "latitude": 38.28520833333333,
+    "longitude": -85.82164722222223,
+    "altitude_m": 144.65,
+    "date": "2026:05:03"
+  },
+  "IMG_3440.jpeg": {
+    "latitude": 38.28529722222222,
+    "longitude": -85.82178611111111,
+    "altitude_m": 139.5,
+    "date": "2026:05:03"
+  },
+  "IMG_3479.jpeg": {
+    "latitude": 38.65585,
+    "longitude": -90.30491666666667,
+    "altitude_m": 157.88,
+    "date": "2026:05:04"
+  },
+  "IMG_3634.jpeg": {
+    "latitude": 38.633383333333335,
+    "longitude": -90.20044722222222,
+    "altitude_m": 158.81,
+    "date": "2026:05:08"
+  },
+  "IMG_4460.jpeg": {
+    "latitude": 38.60825833333333,
+    "longitude": -90.203925,
+    "altitude_m": 133.13,
+    "date": "2026:05:14"
+  },
+  "IMG_4619.jpeg": {
+    "latitude": 38.623558333333335,
+    "longitude": -90.19834166666666,
+    "altitude_m": 136.03,
+    "date": "2026:05:15"
+  },
+  "IMG_4622.jpeg": {
+    "latitude": 38.623691666666666,
+    "longitude": -90.1982888888889,
+    "altitude_m": 136.01,
+    "date": "2026:05:15"
+  },
+  "IMG_4981.jpeg": {
+    "latitude": 39.33121111111112,
+    "longitude": -76.63034722222221,
+    "altitude_m": 78.27,
+    "date": "2026:05:28"
+  },
+  "IMG_4982.jpeg": {
+    "latitude": 39.33122222222222,
+    "longitude": -76.63031666666666,
+    "altitude_m": 80.83,
+    "date": "2026:05:28"
+  },
+  "IMG_5383.jpeg": {
+    "latitude": 37.968222222222224,
+    "longitude": 23.729388888888888,
+    "altitude_m": 80.39,
+    "date": "2026:06:04"
+  },
+  "IMG_5384.jpeg": {
+    "latitude": 37.968222222222224,
+    "longitude": 23.729388888888888,
+    "altitude_m": 80.39,
+    "date": "2026:06:04"
+  },
+  "IMG_5426.jpeg": {
+    "latitude": 37.97510277777778,
+    "longitude": 23.719791666666666,
+    "altitude_m": 68.01,
+    "date": "2026:06:04"
+  },
+  "IMG_5442.jpeg": {
+    "latitude": 37.97024444444445,
+    "longitude": 23.73950277777778,
+    "altitude_m": 83.79,
+    "date": "2026:06:04"
+  },
+  "IMG_5445.jpeg": {
+    "latitude": 37.9716,
+    "longitude": 23.735561111111114,
+    "altitude_m": 89.2,
+    "date": "2026:06:04"
+  },
+  "IMG_5447.jpeg": {
+    "latitude": 37.973441666666666,
+    "longitude": 23.73372777777778,
+    "altitude_m": 91.79,
+    "date": "2026:06:04"
+  },
+  "IMG_5449.jpeg": {
+    "latitude": 37.97525277777778,
+    "longitude": 23.732722222222222,
+    "altitude_m": 87.76,
+    "date": "2026:06:04"
+  },
+  "IMG_5452.jpeg": {
+    "latitude": 37.97525,
+    "longitude": 23.732733333333332,
+    "altitude_m": 87.64,
+    "date": "2026:06:04"
+  },
+  "IMG_5509.jpeg": {
+    "latitude": 35.51549166666667,
+    "longitude": 24.01685833333333,
+    "altitude_m": 10.41,
+    "date": "2026:06:05"
+  },
+  "IMG_5513.jpeg": {
+    "latitude": 35.51623611111111,
+    "longitude": 24.01953888888889,
+    "altitude_m": 11.36,
+    "date": "2026:06:05"
+  },
+  "IMG_5516.jpeg": {
+    "latitude": 35.51651388888889,
+    "longitude": 24.020113888888886,
+    "altitude_m": 12.55,
+    "date": "2026:06:05"
+  },
+  "IMG_5588.jpeg": {
+    "latitude": 35.30719722222222,
+    "longitude": 23.93427777777778,
+    "altitude_m": 672.38,
+    "date": "2026:06:06"
+  },
+  "IMG_5859.jpeg": {
+    "latitude": 35.37050555555555,
+    "longitude": 24.471733333333333,
+    "altitude_m": 8.68,
+    "date": "2026:06:07"
+  },
+  "IMG_5877.jpeg": {
+    "latitude": 35.515277777777776,
+    "longitude": 24.020291666666665,
+    "altitude_m": 11.26,
+    "date": "2026:06:07"
+  },
+  "IMG_5890.jpeg": {
+    "latitude": 35.51676666666667,
+    "longitude": 24.015497222222223,
+    "altitude_m": 12.78,
+    "date": "2026:06:07"
+  },
+  "IMG_5909.jpeg": {
+    "latitude": 37.100297222222224,
+    "longitude": 25.37483888888889,
+    "altitude_m": 10.39,
+    "date": "2026:06:08"
+  },
+  "IMG_5990.jpeg": {
+    "latitude": 37.10151666666667,
+    "longitude": 25.376680555555556,
+    "altitude_m": 14.97,
+    "date": "2026:06:08"
+  },
+  "IMG_6006.jpeg": {
+    "latitude": 37.04672222222222,
+    "longitude": 25.505641666666666,
+    "altitude_m": 571.56,
+    "date": "2026:06:09"
+  },
+  "IMG_6129.jpeg": {
+    "latitude": 37.051852777777775,
+    "longitude": 25.497922222222222,
+    "altitude_m": 365.28,
+    "date": "2026:06:09"
+  },
+  "IMG_6135.jpeg": {
+    "latitude": 37.05211944444444,
+    "longitude": 25.497922222222222,
+    "altitude_m": 366.29,
+    "date": "2026:06:09"
+  },
+  "IMG_6140.jpeg": {
+    "latitude": 37.10018888888889,
+    "longitude": 25.375447222222224,
+    "altitude_m": 6.08,
+    "date": "2026:06:09"
+  },
+  "IMG_7080.jpeg": {
+    "latitude": 41.00568055555556,
+    "longitude": 28.97653611111111,
+    "altitude_m": 36.86,
+    "date": "2026:06:18"
+  },
+  "IMG_7438.jpeg": {
+    "latitude": 40.98755,
+    "longitude": 29.023899999999998,
+    "altitude_m": 21.43,
+    "date": "2026:06:20"
+  },
+  "IMG_7440.jpeg": {
+    "latitude": 40.987858333333335,
+    "longitude": 29.026341666666667,
+    "altitude_m": 28.48,
+    "date": "2026:06:20"
+  },
+  "IMG_7447.jpeg": {
+    "latitude": 40.98931388888889,
+    "longitude": 29.026241666666667,
+    "altitude_m": 25.66,
+    "date": "2026:06:20"
+  },
+  "IMG_7450.jpeg": {
+    "latitude": 40.9861,
+    "longitude": 29.031938888888888,
+    "altitude_m": 18.72,
+    "date": "2026:06:20"
+  },
+  "IMG_7456.jpeg": {
+    "latitude": 40.980580555555555,
+    "longitude": 29.025816666666667,
+    "altitude_m": 15.47,
+    "date": "2026:06:20"
+  },
+  "IMG_7457.jpeg": {
+    "latitude": 40.980725,
+    "longitude": 29.025880555555556,
+    "altitude_m": 18.68,
+    "date": "2026:06:20"
+  },
+  "IMG_7458.jpeg": {
+    "latitude": 40.980694444444445,
+    "longitude": 29.025769444444443,
+    "altitude_m": 18.71,
+    "date": "2026:06:20"
+  },
+  "IMG_9423.jpeg": {
+    "latitude": 40.75718611111111,
+    "longitude": -73.97190833333333,
+    "altitude_m": 9.15,
+    "date": "2026:07:18"
+  },
+  "IMG_9424.jpeg": {
+    "latitude": 40.76483611111111,
+    "longitude": -73.97245833333334,
+    "altitude_m": 8.73,
+    "date": "2026:07:18"
+  },
+  "IMG_9425.jpeg": {
+    "latitude": 40.76483611111111,
+    "longitude": -73.97245833333334,
+    "altitude_m": 8.73,
+    "date": "2026:07:18"
   }
 }

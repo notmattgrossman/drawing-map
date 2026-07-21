@@ -15,7 +15,7 @@ import json
 import shutil
 import subprocess
 from pathlib import Path
-from PIL import Image
+from PIL import Image, ImageOps
 from PIL.ExifTags import TAGS, GPSTAGS
 
 ROOT = Path(__file__).parent.parent
@@ -152,9 +152,11 @@ def main():
 
         lat, lng, alt = gps
 
-        # Copy original to type-photos/
+        # Copy original to type-photos/, auto-rotating for EXIF orientation
         dest_orig = PHOTOS_DIR / name
-        shutil.copy2(src, dest_orig)
+        with Image.open(src) as img:
+            rotated = ImageOps.exif_transpose(img)
+            rotated.save(dest_orig)
 
         # Full-size WebP
         to_webp(dest_orig, PHOTOS_DIR / f"{base}.webp", quality=WEBP_QUALITY)
